@@ -23,7 +23,7 @@
 
 
         <!-- Logo Icon (Consistent throughout design) -->
-        <Image x:Name="logo" Grid.Column="1" Grid.Row="0" Margin="30" Source="/Resources/Logo/ICT_Logo.png"/>
+        <Image x:Name="logo" Grid.Column="1" Grid.Row="0" Margin="30" Source="/Resources/Logo/ICT_Logo.png" HorizontalAlignment="Left"/>
         <Label Content="Support Inventory" Grid.Column="3" Grid.Row="0" Style="{StaticResource HeadingFontStyle}"/>
 
         <!-- HOME SCREEN STARTS HERE -->
