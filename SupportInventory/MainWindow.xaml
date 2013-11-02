@@ -1,8 +1,58 @@
 ﻿<Window x:Class="SupportInventory.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="ICT Support Inventory" Height="780" Width="1280">
+
+    
+    <!-- Top level grid that contains all the pages required -->
+    <Grid x:Name="TopLevelGrid" Background="{StaticResource BackgroundScheme}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.05*"/>
+        </Grid.ColumnDefinitions>
         
+        <!-- HOME SCREEN STARTS HERE -->
+        
+        <!-- Logo Icon -->
+        <Image Margin="30" Grid.Column="1" Grid.Row="0" Source="Resources/Logo/ICT_Logo.png"/>
+        
+        <!-- All items button -->
+        <Button x:Name="AllItems" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource UIButton}" Click="AllItems_Click">
+            <Label Content="All Items" Grid.Column="1" Grid.Row="1"  Grid.ColumnSpan="2" Style="{StaticResource LabelFontStyle}" x:Name="allItemsLabel" Background="#5F000000"/>
+        </Button>
+
+        <!-- Add items button -->
+        <Button x:Name="AddItem" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource UIButton}" Click="AddItem_Click">
+            <Label Content="Add an Item" Grid.Column="1" Grid.Row="3"  Grid.ColumnSpan="2" Style="{StaticResource LabelFontStyle}" x:Name="addItemsLabel" Background="#5F000000"/>
+        </Button>
+
+        <!-- Available items button -->
+        <Button x:Name="Available" Grid.Column="4" Grid.Row="1" Style="{StaticResource UIButton}" Click="Available_Click">
+            <Label Content="Available Items" Grid.Column="4" Grid.Row="1" Style="{StaticResource LabelFontStyle}" x:Name="availItemsLabel" Background="#5F000000"/>
+        </Button>
+
+        <!-- Unavailable items button -->
+        <Button x:Name="Unavailable" Grid.Column="4" Grid.Row="3" Style="{StaticResource UIButton}" Click="Unavailable_Click">
+            <Label Content="In-Use Items" Grid.Column="4" Grid.Row="3" Style="{StaticResource LabelFontStyle}" x:Name="unavailItemsLabel" Background="#5F000000"/>
+        </Button>
+
+        <!-- HOME SCREEN ENDS HERE -->
+        
+        <Grid x:Name="AddItems" Visibility="Collapsed">
+            <Label Content="Hello" Background="Black"/>
+        </Grid>
+        
+
     </Grid>
 </Window>

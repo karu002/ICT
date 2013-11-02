@@ -23,5 +23,25 @@ namespace SupportInventory
         {
             InitializeComponent();
         }
+
+        private void AllItems_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            //AddItems.Visibility = Visibility.Visible;
+        }
+
+        private void Available_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Unavailable_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
