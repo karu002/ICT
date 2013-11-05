@@ -89,28 +89,48 @@
                     <ColumnDefinition Width="0.05*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-                    <Label Content="Product Type" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="ProductTypeBox"/>
-                </StackPanel>
-                
+                <Label x:Name="typeLabel" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Content="Product Type?" Style="{StaticResource InstructionLabel}"/>
+                <Label x:Name="dueBackLabel" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Content="When is it due back?" Style="{StaticResource InstructionLabel}" Visibility="Collapsed"/>
+
                 <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
-                    <Label Content="Serial No." HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="SerialBox" Width="250"/>
+                    <Label Content="Product Type" HorizontalContentAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="Din" Content="DIN" Click="productTypeClick" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="PCB" Content="PCB" Click="productTypeClick" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="ReaderKeypad" Click="productTypeClick" Content="Readers/Keypads" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="Other" Click="productTypeClick" Content="Other" Padding="0 0 0 0"/>
+                    </StackPanel>
+                    <ComboBox x:Name="ProductComboBox" Width="300" Visibility="Collapsed" Margin="5"/>
+                    <TextBox x:Name="ProductTextBox" Width="300" Visibility="Collapsed" Margin="10"/>
                 </StackPanel>
                 
-                <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+                <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="2">
+                    <Label Content="Serial No." HorizontalContentAlignment="Center"/>
+                    <StackPanel >
+                        <TextBox x:Name="SerialBox" Width="300" Margin="21"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="2" Grid.Column="3" Grid.RowSpan="2">
                     <Label Content="Location" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="LocationBox"/>
+                    <TextBox x:Name="LocationBox" Width="300"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
-                    <Label Content="ETR" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="ETRBox" Width="250"/>
+                    <Label Content="Available" HorizontalContentAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="checkYes" Content="Yes" Click="check_Click" Padding="10 0 20 0"/>
+                        <RadioButton x:Name="checkNo" Content="No" Click="check_Click" Padding="10 0 20 0"/>
+                    </StackPanel>
                 </StackPanel>
 
-                <StackPanel Grid.Row="7" Grid.Column="3">
-                    <Button x:Name="SubmitType" Click="SubmitType_Click" Content="Submit"/>
+                <StackPanel x:Name="DuebackPanel" Grid.Row="4" Grid.Column="2" Grid.RowSpan="2" Visibility="Collapsed">
+                    <Label Content="Due Back" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="ETRBox" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="7" Grid.Column="2">
+                    <Button x:Name="SubmitType" Click="SubmitType_Click" Content="Submit" Width="200"/>
                 </StackPanel>
 
 

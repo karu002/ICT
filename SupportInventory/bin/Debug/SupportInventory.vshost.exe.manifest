@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SupportInventory.exe" size="20480">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SupportInventory.exe" size="21504">
       <assemblyIdentity name="SupportInventory" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lYONLppqs8+7kcn64Z7etUDLL6k=</dsig:DigestValue>
+        <dsig:DigestValue>Bt7gTs9M1doSwCnIv1jNawKvIRc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

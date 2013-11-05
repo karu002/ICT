@@ -54,7 +54,19 @@
         <Setter Property="VerticalAlignment" Value="Bottom"/>
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
-    
+
+    <!-- Styling for labels on buttons -->
+    <Style x:Key="InstructionLabel" TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="TextBlock.Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="15"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Background" Value="#5F000000"/>
+    </Style>
+
     <!-- Styling for headers -->
     <Style x:Key="HeadingFontStyle" TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="28"/>
