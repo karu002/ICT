@@ -10,7 +10,9 @@
             <RowDefinition Height="0.25*"/>
             <RowDefinition Height="0.15*"/>
             <RowDefinition Height="0.25*"/>
-            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.05*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.05*"/>
@@ -24,7 +26,8 @@
 
         <!-- Logo Icon (Consistent throughout design) -->
         <Image x:Name="logo" Grid.Column="1" Grid.Row="0" Margin="30" Source="/Resources/Logo/ICT_Logo.png" HorizontalAlignment="Left"/>
-        <Label Content="Support Inventory" Grid.Column="3" Grid.Row="0" Style="{StaticResource HeadingFontStyle}"/>
+        <Label x:Name="HeaderLabel" Content="Support Inventory" Grid.Column="3" Grid.Row="0" Style="{StaticResource HeadingFontStyle}"/>
+        <Button x:Name="BackButton" Content="Back" Grid.Row="5" Grid.Column="3" Click="BackButton_Click" Visibility="Collapsed"/>
 
         <!-- HOME SCREEN STARTS HERE -->
         <Grid x:Name="Menu" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Visible">
@@ -60,25 +63,74 @@
             </Button>
 
         </Grid>
-        
-        
+
+
         <!-- HOME SCREEN ENDS HERE -->
-        
-        <Grid x:Name="AddItemGrid" Visibility="Collapsed">
-            
-        </Grid>
 
-        <Grid x:Name="AllItemGrid" Visibility="Collapsed">
 
-        </Grid>
+        <Border x:Name="AddItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
+            <Grid  Background="{StaticResource BasicOverlayScheme}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.05*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                </Grid.ColumnDefinitions>
 
-        <Grid x:Name="AvailableItemGrid" Visibility="Collapsed">
+                <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                    <Label Content="Product Type" HorizontalContentAlignment="Center"/>
+                    <ComboBox x:Name="ProductTypeBox"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
+                    <Label Content="Serial No." HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="SerialBox" Width="250"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+                    <Label Content="Location" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="LocationBox"/>
+                </StackPanel>
 
-        </Grid>
+                <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
+                    <Label Content="ETR" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="ETRBox" Width="250"/>
+                </StackPanel>
 
-        <Grid x:Name="UnavailableItemGrid" Visibility="Collapsed">
+                <StackPanel Grid.Row="7" Grid.Column="3">
+                    <Button x:Name="SubmitType" Click="SubmitType_Click" Content="Submit"/>
+                </StackPanel>
 
-        </Grid>
+
+            </Grid>
+        </Border>
+
+        <Border x:Name="AvailableItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
+            <Grid >
+            </Grid>
+        </Border>
+
+        <Border x:Name="UnavailableItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
+            <Grid>
+            </Grid>
+        </Border>
+
+        <Border x:Name="AllItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
+            <Grid >
+            </Grid>
+        </Border>
 
 
     </Grid>

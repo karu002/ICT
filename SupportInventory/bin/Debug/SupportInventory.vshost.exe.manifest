@@ -42,14 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SupportInventory.exe" size="16384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SQLite.NET.dll" size="65536">
+      <assemblyIdentity name="SQLite.NET" version="0.21.1869.3794" publicKeyToken="C273BD375E695F9C" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>3PmLgHIrkZq4ovxk6m7S8mUfzWM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SupportInventory.exe" size="20480">
       <assemblyIdentity name="SupportInventory" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ltHlcbSVmBtNdpg73kaWX1VArC8=</dsig:DigestValue>
+        <dsig:DigestValue>lYONLppqs8+7kcn64Z7etUDLL6k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
