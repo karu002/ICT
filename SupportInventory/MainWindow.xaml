@@ -23,7 +23,6 @@
             <ColumnDefinition Width="0.05*"/>
         </Grid.ColumnDefinitions>
 
-
         <!-- Logo Icon (Consistent throughout design) -->
         <Image x:Name="logo" Grid.Column="1" Grid.Row="0" Margin="30" Source="/Resources/Logo/ICT_Logo.png" HorizontalAlignment="Left"/>
         <Label x:Name="HeaderLabel" Content="Support Inventory" Grid.Column="3" Grid.Row="0" Style="{StaticResource HeadingFontStyle}"/>
@@ -53,13 +52,13 @@
             </Button>
 
             <!-- Available items button -->
-            <Button x:Name="AvailableItemButton" Grid.Column="2" Grid.Row="0" Style="{StaticResource UIButton}" Click="Available_Click">
-                <Label Content="Available Items" Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelFontStyle}" x:Name="availItemsLabel"/>
+            <Button x:Name="SearchItemButton" Grid.Column="2" Grid.Row="0" Style="{StaticResource UIButton}" Click="SearchItem_Click">
+                <Label Content="Search Items" Grid.Column="2" Grid.Row="0" Style="{StaticResource LabelFontStyle}" x:Name="availItemsLabel"/>
             </Button>
 
             <!-- Unavailable items button -->
-            <Button x:Name="UnavailableItemButton" Grid.Column="2" Grid.Row="2" Style="{StaticResource UIButton}" Click="Unavailable_Click">
-                <Label Content="In-Use Items" Grid.Column="2" Grid.Row="2" Style="{StaticResource LabelFontStyle}" x:Name="unavailItemsLabel"/>
+            <Button x:Name="UpdateItemButton" Grid.Column="2" Grid.Row="2" Style="{StaticResource UIButton}" Click="UpdateItem_Click">
+                <Label Content="Update Item" Grid.Column="2" Grid.Row="2" Style="{StaticResource LabelFontStyle}" x:Name="unavailItemsLabel"/>
             </Button>
 
         </Grid>
@@ -90,18 +89,18 @@
                 </Grid.ColumnDefinitions>
 
                 <Label x:Name="typeLabel" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Content="Product Type?" Style="{StaticResource InstructionLabel}"/>
-                <Label x:Name="dueBackLabel" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Content="When is it due back?" Style="{StaticResource InstructionLabel}" Visibility="Collapsed"/>
+                <Label x:Name="dueBackLabel" Padding="0 9" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Content="When is it due back?" Style="{StaticResource InstructionLabel}" Visibility="Collapsed"/>
 
-                <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
+                <StackPanel x:Name="AddItemPanel" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
                     <Label Content="Product Type" HorizontalContentAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <RadioButton x:Name="Din" Content="DIN" Click="productTypeClick" Padding="0 0 20 0"/>
-                        <RadioButton x:Name="PCB" Content="PCB" Click="productTypeClick" Padding="0 0 20 0"/>
-                        <RadioButton x:Name="ReaderKeypad" Click="productTypeClick" Content="Readers/Keypads" Padding="0 0 20 0"/>
-                        <RadioButton x:Name="Other" Click="productTypeClick" Content="Other" Padding="0 0 0 0"/>
+                        <RadioButton x:Name="Din" Content="DIN" Click="ProductType_Click" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="PCB" Content="PCB" Click="ProductType_Click" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="ReaderKeypad" Click="ProductType_Click" Content="Readers/Keypads" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="Other" Click="ProductType_Click" Content="Other" Padding="0 0 0 0"/>
                     </StackPanel>
                     <ComboBox x:Name="ProductComboBox" Width="300" Visibility="Collapsed" Margin="5"/>
-                    <TextBox x:Name="ProductTextBox" Width="300" Visibility="Collapsed" Margin="10"/>
+                    <TextBox x:Name="ProductTextBox" Width="300" Visibility="Collapsed" Margin="5"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="2">
@@ -119,8 +118,8 @@
                 <StackPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="2">
                     <Label Content="Available" HorizontalContentAlignment="Center"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <RadioButton x:Name="checkYes" Content="Yes" Click="check_Click" Padding="10 0 20 0"/>
-                        <RadioButton x:Name="checkNo" Content="No" Click="check_Click" Padding="10 0 20 0"/>
+                        <RadioButton x:Name="checkYes" Content="Yes" Click="Check_Click" Padding="10 0 20 0"/>
+                        <RadioButton x:Name="checkNo" Content="No" Click="Check_Click" Padding="10 0 20 0"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -128,27 +127,128 @@
                     <Label Content="Due Back" HorizontalContentAlignment="Center"/>
                     <TextBox x:Name="ETRBox" Width="300"/>
                 </StackPanel>
-
-                <StackPanel Grid.Row="7" Grid.Column="2">
-                    <Button x:Name="SubmitType" Click="SubmitType_Click" Content="Submit" Width="200"/>
+                
+                <StackPanel Grid.Row="4" Grid.Column="3" Grid.RowSpan="2">
+                    <Label Content="Owner" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="OwnerBox" Width="300"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="6" Grid.Column="3" Grid.RowSpan="2">
+                    <Label Content="Comments" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="CommentsBox" Height="300"/>
                 </StackPanel>
 
-
+                <StackPanel Grid.Row="7" Grid.Column="2">
+                    <Button x:Name="SubmitType" Click="SubmitType_Click" Content="Submit" Width="200" Margin="8"/>
+                    <Button x:Name="ClearButton" Click="ClearButton_Click"  Content="Clear All" Width="200" Margin="8"/>
+                </StackPanel>
             </Grid>
         </Border>
 
-        <Border x:Name="AvailableItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
-            <Grid >
+        <Border x:Name="SearchItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
+            <Grid Background="{StaticResource BasicOverlayScheme}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="10" Style="{StaticResource DataBorder}">
+                    <DataGrid x:Name="SearchDataGrid" CanUserDeleteRows="False" CanUserAddRows="False" IsTextSearchEnabled="True" IsReadOnly="True" AutoGenerateColumns="False" AreRowDetailsFrozen="True" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="100" CanUserResize="False" Binding="{Binding ProductType}" Header="Product Type"/>
+                            <DataGridTextColumn Width="100" CanUserResize="False" Binding="{Binding SerialNumber}" Header="Serial Number"/>
+                            <DataGridTextColumn Width="80" Binding="{Binding Location}" Header="Location"/>
+                            <DataGridTextColumn Width="80" CanUserResize="False" Binding="{Binding Availability}" Header="Availability"/>
+                            <DataGridTextColumn Width="75" CanUserResize="False" Binding="{Binding Owner}" Header="Owner"/>
+                            <DataGridTextColumn Width="75" Binding="{Binding ETR}" Header="ETR"/>
+                            <DataGridTextColumn Width="140" Binding="{Binding Comments}" Header="General Comments"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            
+                <StackPanel x:Name="SearchPanel" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                    <Label Content="Product Type" HorizontalContentAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="searchDin" Content="DIN" Click="SearchType_Click" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="searchPCB" Content="PCB" Click="SearchType_Click" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="searchReaderKeypad" Click="SearchType_Click" Content="Readers/Keypads" Padding="0 0 20 0"/>
+                        <RadioButton x:Name="searchOther" Click="SearchType_Click" Content="Other" Padding="0 0 0 0"/>
+                    </StackPanel>
+                    <ComboBox x:Name="SearchProductComboBox" Width="300" Visibility="Collapsed" Margin="5"/>
+                    <TextBox x:Name="SearchProductTextBox" Width="300" Visibility="Collapsed" Margin="5"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+                    <Label Content="Serial Number" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="SerialNum" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="2">
+                    <Label Content="Available" HorizontalContentAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="SearchAvailable" Content="Yes" Click="SearchAvailable_Click" Padding="10 0 20 0"/>
+                        <RadioButton x:Name="SearchUnavailable" Content="No" Click="SearchAvailable_Click" Padding="10 0 20 0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Row="6" Grid.Column="2" Grid.RowSpan="3">
+                    <Button x:Name="SearchButton" Click="SearchButton_Click" Content="Search" Width="200" Margin="8"/>
+                    <Button x:Name="Refresh" Content="Refresh" Width="200" Margin="8" Click="RefreshAll_Click"/>
+                    <Button x:Name="ClearSearchButton" Click="ClearSearchButton_Click"  Content="Clear Fields" Width="200" Margin="8"/>
+                </StackPanel>
             </Grid>
         </Border>
 
-        <Border x:Name="UnavailableItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
+        <Border x:Name="UpdateItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
             <Grid>
             </Grid>
         </Border>
 
         <Border x:Name="AllItem" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="Collapsed" Style="{StaticResource BorderStyle}">
-            <Grid >
+            <Grid Background="{StaticResource BasicOverlayScheme}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.9*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Border Style="{StaticResource DataBorder}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10">
+                    <DataGrid x:Name="AllDataGrid" CanUserAddRows="False" IsTextSearchEnabled="True" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="AllDataGrid_MouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="150" CanUserResize="False" Binding="{Binding ProductType}" Header="Product Type"/>
+                            <DataGridTextColumn Width="150" CanUserResize="False" Binding="{Binding SerialNumber}" Header="Serial Number"/>
+                            <DataGridTextColumn Width="100" CanUserResize="False" Binding="{Binding Location}" Header="Location"/>
+                            <DataGridTextColumn Width="100" CanUserResize="False" Binding="{Binding Availability}" Header="Availability"/>
+                            <DataGridTextColumn Width="100" CanUserResize="False" Binding="{Binding Owner}" Header="Owner"/>
+                            <DataGridTextColumn Width="100" Binding="{Binding ETR}" Header="ETR"/>
+                            <DataGridTextColumn Width="411" Binding="{Binding Comments}" Header="General Comments"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+                <Button x:Name="RefreshAll" Grid.Row="1" Content="Refresh" Grid.Column="4" Grid.ColumnSpan="2" Margin="5" Click="RefreshAll_Click"/>
             </Grid>
         </Border>
 

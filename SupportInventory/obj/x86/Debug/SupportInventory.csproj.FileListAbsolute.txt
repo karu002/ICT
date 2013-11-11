@@ -15,3 +15,4 @@ C:\Users\Kirushi\documents\visual studio 2010\Projects\SupportInventory\SupportI
 C:\Users\Kirushi\documents\visual studio 2010\Projects\SupportInventory\SupportInventory\obj\x86\Debug\SupportInventory.application
 C:\Users\Kirushi\documents\visual studio 2010\Projects\SupportInventory\SupportInventory\obj\x86\Debug\SupportInventory.exe
 C:\Users\Kirushi\documents\visual studio 2010\Projects\SupportInventory\SupportInventory\obj\x86\Debug\SupportInventory.pdb
+C:\Users\Kirushi\documents\visual studio 2010\Projects\SupportInventory\SupportInventory\obj\x86\Debug\SupportInventory.csprojResolveAssemblyReference.cache
